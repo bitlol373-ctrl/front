@@ -16,11 +16,11 @@ type ApiAnime = {
 }
 
 export default function Home() {
-  const [tab, setTab] = useState<SourceTab>('DSTUDIO')
+  const [tab] = useState<SourceTab>('DSTUDIO')
   const [loading, setLoading] = useState(true)
   const [items, setItems] = useState<AnimeCardItem[]>([])
-  const [query, setQuery] = useState('')
-  const [sort, setSort] = useState<SortMode>('new')
+  const [query] = useState('')
+  const [sort] = useState<SortMode>('new')
 
   const API = import.meta.env.VITE_API_BASE_URL || ''
 
