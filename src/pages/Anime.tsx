@@ -28,7 +28,7 @@ function resolveCoverSrc(url?: string) {
 export default function Anime() {
   const { animeId } = useParams()
   const idNum = useMemo(() => Number(animeId || 0), [animeId])
-
+  const API = import.meta.env.VITE_API_BASE_URL
   const [anime, setAnime] = useState<AnimeResponse | null>(null)
   const [activeEpisodeId, setActiveEpisodeId] = useState<number | null>(null)
   const [loading, setLoading] = useState(true)
