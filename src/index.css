@@ -1,0 +1,224 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: #070611;
+  color: white;
+}
+
+/* чуть приятнее рендер текста */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* аккуратный выделитель */
+::selection {
+  background: rgba(124, 58, 237, 0.35);
+}
+
+/* скроллбар (по желанию) */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+/* AniDraft thin progress bar */
+.ad-progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;              /* <-- тонко */
+  background: rgba(255,255,255,0.10);
+  border-radius: 999px;
+  outline: none;
+}
+
+/* WebKit track */
+.ad-progress::-webkit-slider-runnable-track {
+  height: 6px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 999px;
+}
+
+/* WebKit thumb */
+.ad-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;              /* <-- маленький бегунок */
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(167,139,250,0.95); /* violet */
+  border: 2px solid rgba(0,0,0,0.35);
+  margin-top: -3px;         /* центрируем по треку */
+}
+
+/* Firefox */
+.ad-progress::-moz-range-track {
+  height: 6px;
+  background: rgba(255,255,255,0.10);
+  border-radius: 999px;
+}
+.ad-progress::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(167,139,250,0.95);
+  border: 2px solid rgba(0,0,0,0.35);
+}
+/* AniDraft custom range with fill */
+.ad-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* track */
+.ad-range::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background:
+    linear-gradient(to right, rgba(167,139,250,0.9) var(--ad-fill, 0%), rgba(255,255,255,0.18) var(--ad-fill, 0%));
+}
+.ad-range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+}
+.ad-range::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(167,139,250,0.9);
+}
+
+/* thumb */
+.ad-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(167,139,250,0.95);
+  border: 1px solid rgba(255,255,255,0.25);
+  margin-top: -4px; /* align with 4px track */
+}
+.ad-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: rgba(167,139,250,0.95);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* volume немного тоньше */
+.ad-range--vol::-webkit-slider-runnable-track { height: 3px; }
+.ad-range--vol::-moz-range-track { height: 3px; }
+.ad-range--vol::-moz-range-progress { height: 3px; }
+
+/* красивый range для громкости */
+.ad-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+  outline: none;
+}
+
+.ad-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: white;
+  box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.14);
+  cursor: pointer;
+}
+
+.ad-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: white;
+  border: none;
+  box-shadow: 0 0 0 6px rgba(167, 139, 250, 0.14);
+  cursor: pointer;
+}
+
+.ad-range::-moz-range-track {
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.18);
+}
+.ad-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+  outline: none;
+}
+
+.ad-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: white;
+  box-shadow: 0 0 0 6px rgba(167,139,250,.14);
+  cursor: pointer;
+}
+
+.ad-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: white;
+  border: none;
+  box-shadow: 0 0 0 6px rgba(167,139,250,.14);
+  cursor: pointer;
+}
+
+.ad-range::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.18);
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.95);
+  border: 2px solid rgba(167,139,250,0.9);
+  box-shadow: 0 0 18px rgba(124,58,237,0.25);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.95);
+  border: 2px solid rgba(167,139,250,0.9);
+  box-shadow: 0 0 18px rgba(124,58,237,0.25);
+}
