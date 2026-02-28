@@ -19,7 +19,7 @@ export default function Watch() {
   >([])
   const [current, setCurrent] = useState<number>(-1)
   const [error, setError] = useState<string>('')
-
+console.log("WATCH VERSION 777")
   const hlsUrl = useMemo(() => {
   return `${API}/video/${id}/hls`
     }, [API, id])
