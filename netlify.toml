@@ -1,7 +1,3 @@
-[build]
-  command = "npm run build"
-  publish = "dist"
-
 [[redirects]]
   from = "/anime/*"
   to = "https://anidrtst.onrender.com/anime/:splat"
@@ -20,7 +16,6 @@
   status = 200
   force = true
 
-# SPA fallback ДОЛЖЕН БЫТЬ ПОСЛЕДНИМ
 [[redirects]]
   from = "/*"
   to = "/index.html"
