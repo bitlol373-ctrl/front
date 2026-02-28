@@ -30,8 +30,8 @@ export default function Profile() {
     }
     setLoading(true)
     setMsg('')
-    const API = import.meta.env.VITE_API_BASE_URL || ''
-    const res = await fetch('${API}/auth/me', {
+   
+    const res = await fetch('https://anidrtst.onrender.com/auth/me', {
       headers: { Authorization: `Bearer ${token}` },
     })
     if (!res.ok) {
