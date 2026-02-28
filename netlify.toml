@@ -16,3 +16,8 @@
   from = "/video*"
   to = "https://anidrtst.onrender.com/video:splat"
   status = 200
+  
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
