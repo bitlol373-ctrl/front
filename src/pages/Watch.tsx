@@ -11,7 +11,7 @@ export default function Watch() {
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const hlsRef = useRef<Hls | null>(null)
-
+  const API = import.meta.env.VITE_API_BASE_URL
   const [qualities, setQualities] = useState<{ index: number; label: string }[]>([])
   const [current, setCurrent] = useState<number>(-1) // -1 = auto
   const [error, setError] = useState<string>('')
