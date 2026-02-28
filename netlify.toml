@@ -3,20 +3,24 @@
   publish = "dist"
 
 [[redirects]]
-  from = "/anime*"
-  to = "https://anidrtst.onrender.com/anime:splat"
+  from = "/anime/*"
+  to = "https://anidrtst.onrender.com/anime/:splat"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/auth*"
-  to = "https://anidrtst.onrender.com/auth:splat"
+  from = "/video/*"
+  to = "https://anidrtst.onrender.com/video/:splat"
   status = 200
+  force = true
 
 [[redirects]]
-  from = "/video*"
-  to = "https://anidrtst.onrender.com/video:splat"
+  from = "/auth/*"
+  to = "https://anidrtst.onrender.com/auth/:splat"
   status = 200
-  
+  force = true
+
+# SPA fallback ДОЛЖЕН БЫТЬ ПОСЛЕДНИМ
 [[redirects]]
   from = "/*"
   to = "/index.html"
