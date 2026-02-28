@@ -19,7 +19,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  const API = import.meta.env.VITE_API_BASE_URL
   const [authError, setAuthError] = useState('')
   const [me, setMe] = useState<Me | null>(null)
   const [loadingMe, setLoadingMe] = useState(false)
