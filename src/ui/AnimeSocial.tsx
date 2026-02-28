@@ -16,7 +16,7 @@ type SocialResp = {
 
 export function AnimeSocial({ animeId }: { animeId: number }) {
   const tokenKey = 'anidraft_token'
- 
+ const API = import.meta.env.VITE_API_BASE_URL || ''
   const token = useMemo(() => localStorage.getItem(tokenKey) || '', [])
   const authHeaders = useMemo((): HeadersInit => {
     return token ? { Authorization: `Bearer ${token}` } : {}
