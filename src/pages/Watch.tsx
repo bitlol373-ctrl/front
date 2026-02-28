@@ -11,12 +11,16 @@ export default function Watch() {
 
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const hlsRef = useRef<Hls | null>(null)
-  const API = import.meta.env.VITE_API_BASE_URL
-  const [qualities, setQualities] = useState<{ index: number; label: string }[]>([])
-  const [current, setCurrent] = useState<number>(-1) // -1 = auto
+
+  const API = import.meta.env.VITE_API_BASE_URL || ''
+
+  const [qualities, setQualities] = useState<
+    { index: number; label: string }[]
+  >([])
+  const [current, setCurrent] = useState<number>(-1)
   const [error, setError] = useState<string>('')
 
-  const hlsUrl = useMemo(() => `/video/${id}/hls`, [id])
+  const hlsUrl = useMemo(() => `${API}/video/${id}/hls`, [API, id])
 
   useEffect(() => {
     setError('')
@@ -26,7 +30,6 @@ export default function Watch() {
     const video = videoRef.current
     if (!video || !id) return
 
-    // чистим прошлый HLS
     if (hlsRef.current) {
       hlsRef.current.destroy()
       hlsRef.current = null
@@ -40,17 +43,17 @@ export default function Watch() {
       }
 
       const data = (await res.json()) as HlsResp
-      const src = new URL(data.hlsPath, window.location.origin).toString()
+      const src = data.hlsPath
 
       if (Hls.isSupported()) {
         const hls = new Hls({
           maxBufferLength: 30,
           maxMaxBufferLength: 60,
-          maxBufferSize: 30 * 1000 * 1000, // 30MB
+          maxBufferSize: 30 * 1000 * 1000,
           backBufferLength: 30,
         })
-        hlsRef.current = hls
 
+        hlsRef.current = hls
         hls.loadSource(src)
         hls.attachMedia(video)
 
@@ -60,7 +63,10 @@ export default function Watch() {
 
         hls.on(Hls.Events.MANIFEST_LOADED, () => {
           const opts = [{ index: -1, label: 'Auto' }].concat(
-            hls.levels.map((l, idx) => ({ index: idx, label: `${l.height}p` })),
+            hls.levels.map((l, idx) => ({
+              index: idx,
+              label: `${l.height}p`,
+            })),
           )
           setQualities(opts)
         })
@@ -69,7 +75,8 @@ export default function Watch() {
           if (e?.details === Hls.ErrorDetails.BUFFER_FULL_ERROR) {
             try {
               const v = videoRef.current
-              if (v && Number.isFinite(v.currentTime)) v.currentTime = v.currentTime + 0.01
+              if (v && Number.isFinite(v.currentTime))
+                v.currentTime = v.currentTime + 0.01
             } catch {}
             return
           }
@@ -84,7 +91,6 @@ export default function Watch() {
     })()
 
     return () => {
-      // cleanup на размонтирование/смену эпизода
       if (hlsRef.current) {
         hlsRef.current.destroy()
         hlsRef.current = null
@@ -93,7 +99,9 @@ export default function Watch() {
   }, [hlsUrl, id])
 
   useEffect(() => {
-    if (hlsRef.current) hlsRef.current.currentLevel = current
+    if (hlsRef.current) {
+      hlsRef.current.currentLevel = current
+    }
   }, [current])
 
   return (
@@ -105,7 +113,7 @@ export default function Watch() {
 
       <PlayerShell
         videoRef={videoRef}
-        title={`Episode_${id}`}
+        title={`Episode ${id}`}
         error={error}
         quality={current}
         onQuality={(v) => setCurrent(v)}
