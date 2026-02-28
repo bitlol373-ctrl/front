@@ -57,7 +57,7 @@ export default function Profile() {
     setSaving(true)
     setMsg('')
    
-    const res = await fetch('${API}/auth/profile', {
+    const res = await fetch('https://anidrtst.onrender.com/auth/profile', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
