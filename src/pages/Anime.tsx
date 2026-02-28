@@ -41,7 +41,7 @@ export default function Anime() {
         setLoading(true)
         setAnime(null)
         setActiveEpisodeId(null)
-
+        const API = import.meta.env.VITE_API_BASE_URL || ''
         const res = await fetch(`${API}/anime/${idNum}`)
         if (!res.ok) throw new Error('Anime not found')
 
