@@ -40,7 +40,7 @@ export function AnimeSocial({ animeId }: { animeId: number }) {
       setErr('')
       setLoading(true)
 
-      const res = await fetch(`/anime/${animeId}/social`, {
+      const res = await fetch(`${API}/anime/${animeId}/social`, {
         headers: { ...authHeaders },
       })
 
@@ -74,7 +74,7 @@ const data = (await res.json()) as SocialResp
     }
 
     setErr('')
-    const res = await fetch(`/anime/${animeId}/rating`, {
+    const res = await fetch(`${API}/anime/${animeId}/rating`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...authHeaders },
       body: JSON.stringify({ value: ratingValue }),
@@ -101,7 +101,7 @@ const data = (await res.json()) as SocialResp
     }
 
     setErr('')
-    const res = await fetch(`/anime/${animeId}/comments`, {
+    const res = await fetch(`${API}/anime/${animeId}/comments`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', ...authHeaders },
       body: JSON.stringify({ text }),
