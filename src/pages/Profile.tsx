@@ -11,7 +11,7 @@ type Me = {
 export default function Profile() {
   const tokenKey = 'anidraft_token'
   const token = useMemo(() => localStorage.getItem(tokenKey) || '', [])
-
+  const API = import.meta.env.VITE_API_BASE_URL || ''
   const [me, setMe] = useState<Me | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -30,7 +30,7 @@ export default function Profile() {
     }
     setLoading(true)
     setMsg('')
-    const res = await fetch('http://localhost:3000/auth/me', {
+    const res = await fetch('${API}/auth/me', {
       headers: { Authorization: `Bearer ${token}` },
     })
     if (!res.ok) {
@@ -55,8 +55,8 @@ export default function Profile() {
     if (!token) return
     setSaving(true)
     setMsg('')
-
-    const res = await fetch('http://localhost:3000/auth/profile', {
+   
+    const res = await fetch('${API}/auth/profile', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
