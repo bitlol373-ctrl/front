@@ -151,16 +151,16 @@ return (
           </div>
         )}
       </section>
- {/* stats */}
+
           <div className="grid gap-3 sm:grid-cols-3 lg:w-[420px]">
             <Stat title="Каталог" value={tab === 'DSTUDIO' ? 'dStudio' : 'Остальное'} hint="переключайте вкладкой" />
             <Stat title="Тайтлов" value={loading ? '...' : String(items.length)} hint="из базы" />
             <Stat title="UI" value="Minimal" hint="Purple Glass" />
           </div>
         </div>
-        {/* Tabs + Search + sort */}
+        
         <div className="relative mt-7 grid gap-3 lg:grid-cols-12">
-          {/* tabs */}
+          
           <div className="lg:col-span-4">
             <div className="flex w-full overflow-hidden rounded-2xl border border-white/10 bg-[#070611]/40 p-1">
               <TabBtn active={tab === 'DSTUDIO'} onClick={() => setTab('DSTUDIO')}>
