@@ -96,6 +96,13 @@ return (
               По заказу DraftStudio для вас. С любовью AniDraft
             </p>
 
+            <div className="mt-5 flex flex-wrap gap-2">
+              <Pill>WIP</Pill>
+              <Pill>Multi-quality</Pill>
+              <Pill>Custom player</Pill>
+              <Pill>Violet / Blue</Pill>
+            </div>
+
             <div className="mt-6">
               <Link
                 to="/anime/1"
@@ -144,7 +151,26 @@ return (
           </div>
         )}
       </section>
-
+ {/* stats */}
+          <div className="grid gap-3 sm:grid-cols-3 lg:w-[420px]">
+            <Stat title="Каталог" value={tab === 'DSTUDIO' ? 'dStudio' : 'Остальное'} hint="переключайте вкладкой" />
+            <Stat title="Тайтлов" value={loading ? '...' : String(items.length)} hint="из базы" />
+            <Stat title="UI" value="Minimal" hint="Purple Glass" />
+          </div>
+        </div>
+        {/* Tabs + Search + sort */}
+        <div className="relative mt-7 grid gap-3 lg:grid-cols-12">
+          {/* tabs */}
+          <div className="lg:col-span-4">
+            <div className="flex w-full overflow-hidden rounded-2xl border border-white/10 bg-[#070611]/40 p-1">
+              <TabBtn active={tab === 'DSTUDIO'} onClick={() => setTab('DSTUDIO')}>
+                dStudio
+              </TabBtn>
+              <TabBtn active={tab === 'COMMUNITY'} onClick={() => setTab('COMMUNITY')}>
+                Остальные
+              </TabBtn>
+            </div>
+          </div>
       <section className="space-y-3">
         <div className="flex items-end justify-between">
           <h2 className="text-lg font-semibold">Все тайтлы</h2>
