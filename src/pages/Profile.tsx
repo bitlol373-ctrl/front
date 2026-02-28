@@ -11,7 +11,7 @@ type Me = {
 export default function Profile() {
   const tokenKey = 'anidraft_token'
   const token = useMemo(() => localStorage.getItem(tokenKey) || '', [])
-  const API = import.meta.env.VITE_API_BASE_URL || ''
+  
   const [me, setMe] = useState<Me | null>(null)
   const [loading, setLoading] = useState(true)
 
