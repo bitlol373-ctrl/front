@@ -11,8 +11,8 @@ export default function EpisodePlayer({ episodeId }: { episodeId: number }) {
   const [qualities, setQualities] = useState<{ index: number; label: string }[]>([])
   const [current, setCurrent] = useState<number>(-1)
   const [error, setError] = useState<string>('')
-
-  const hlsUrl = useMemo(() => `/video/${episodeId}/hls`, [episodeId])
+  const API = import.meta.env.VITE_API_BASE_URL || ''
+  const hlsUrl = useMemo(() => `${API}/video/${episodeId}/hls`, [episodeId])
 
   useEffect(() => {
     setError('')
