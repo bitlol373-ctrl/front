@@ -21,7 +21,7 @@ export default function Watch() {
   const [error, setError] = useState<string>('')
 
   const hlsUrl = useMemo(() => {
-  return ${API}/video/${id}/hls
+  return `${API}/video/${id}/hls`
     }, [API, id])
 
   useEffect(() => {
