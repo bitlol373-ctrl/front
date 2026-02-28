@@ -37,7 +37,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
     setLoadingMe(true)
     try {
-      const res = await fetch('http://localhost:3000/auth/me', {
+      const res = await fetch('${API}/auth/me', {
         headers: authHeaders(tok),
       })
 
