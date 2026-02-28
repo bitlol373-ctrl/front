@@ -7,7 +7,7 @@ type HlsResp = { hlsPath: string }
 export default function EpisodePlayer({ episodeId }: { episodeId: number }) {
   const videoRef = useRef<HTMLVideoElement | null>(null)
   const hlsRef = useRef<Hls | null>(null)
-  const API = import.meta.env.VITE_API_BASE_URL
+
   const [qualities, setQualities] = useState<{ index: number; label: string }[]>([])
   const [current, setCurrent] = useState<number>(-1)
   const [error, setError] = useState<string>('')
