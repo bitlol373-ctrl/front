@@ -35,7 +35,7 @@ export default function PlayerShell({
 }: Props) {
   const wrapRef = useRef<HTMLDivElement | null>(null)
   const hideTimer = useRef<number | null>(null)
-  const API = import.meta.env.VITE_API_BASE_URL
+ 
   const [ready, setReady] = useState(false)
   const [paused, setPaused] = useState(true)
   const [duration, setDuration] = useState(0)
