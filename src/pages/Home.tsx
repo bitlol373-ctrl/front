@@ -17,7 +17,7 @@ export default function Home() {
   const [tab, setTab] = useState<SourceTab>('DSTUDIO')
   const [loading, setLoading] = useState(true)
   const [items, setItems] = useState<AnimeCardItem[]>([])
-
+  const API = import.meta.env.VITE_API_BASE_URL
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState<SortMode>('new')
 
