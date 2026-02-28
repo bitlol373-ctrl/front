@@ -19,7 +19,7 @@ function resolvePoster(url?: string) {
 
 export default function AnimeCard({ item }: { item: AnimeCardItem }) {
   const posterSrc = resolvePoster(item.poster)
-
+  const API = import.meta.env.VITE_API_BASE_URL
   return (
     <article className="group overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur transition hover:bg-white/7">
       <div className="relative aspect-[16/9] overflow-hidden">
