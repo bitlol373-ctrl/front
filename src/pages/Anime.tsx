@@ -42,7 +42,7 @@ export default function Anime() {
         setAnime(null)
         setActiveEpisodeId(null)
 
-        const res = await fetch(`/anime/${idNum}`)
+        const res = await fetch(`${API}/anime/${idNum}`)
         if (!res.ok) throw new Error('Anime not found')
 
         const data: AnimeResponse = await res.json()
